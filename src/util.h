@@ -31,6 +31,16 @@ namespace util {
       return result;
    }
 
+   inline string trim(const string& whitespacedString, const string& whitespace = " \t")
+   {
+      const auto begin = whitespacedString.find_first_not_of(whitespace);
+      if (begin == std::string::npos)
+         return string();
+
+      const auto end = whitespacedString.find_last_not_of(whitespace);
+      return whitespacedString.substr(begin, end - begin + 1);
+   }
+
    inline constexpr ushort numberOfDigits(const uint number)  
    {  
       return (number < 10 ? 1 :   
